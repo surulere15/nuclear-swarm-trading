@@ -1,0 +1,162 @@
+"""
+Bybit Configuration for Nuclear Swarm Trading System
+Copy this file to config.py and add your API credentials
+
+INSTRUCTIONS:
+1. Copy this file: cp config.py.template config.py
+2. Edit config.py and add your Bybit API keys
+3. Never commit config.py to git (it's in .gitignore)
+"""
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# BYBIT API CREDENTIALS
+# ═══════════════════════════════════════════════════════════════════════════════
+
+# Get your API keys from:
+# - Testnet: https://testnet.bybit.com/app/user/api-management
+# - Live: https://www.bybit.com/app/user/api-management
+
+BYBIT_API_KEY = "YOUR_API_KEY_HERE"        # Replace with your actual API key
+BYBIT_API_SECRET = "YOUR_API_SECRET_HERE"  # Replace with your actual API secret
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# TRADING MODE
+# ═══════════════════════════════════════════════════════════════════════════════
+
+# TESTNET = Use Bybit testnet (free test funds, zero risk)
+# LIVE = Use real Bybit account (real money, real risk)
+
+TESTNET = True  # ⚠️ ALWAYS start with True for testing!
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# CAPITAL ALLOCATION
+# ═══════════════════════════════════════════════════════════════════════════════
+
+INITIAL_CAPITAL = 500  # Starting capital in USDT
+
+# Nuclear Swarm Parameters
+MAX_POSITIONS = 100          # Maximum concurrent positions (nuclear swarm size)
+POSITION_SIZE_MIN = 0.005    # Minimum position size (0.5% of capital)
+POSITION_SIZE_MAX = 0.03     # Maximum position size (3.0% of capital)
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# TRADING SYMBOLS (20 pairs)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+SYMBOLS = [
+    # Major Pairs (High liquidity)
+    'BTCUSDT',      # Bitcoin
+    'ETHUSDT',      # Ethereum
+    'SOLUSDT',      # Solana
+    'BNBUSDT',      # Binance Coin
+
+    # Layer 2 & Altcoins
+    'ARBUSDT',      # Arbitrum
+    'MATICUSDT',    # Polygon
+    'AVAXUSDT',     # Avalanche
+    'LINKUSDT',     # Chainlink
+
+    # DeFi & Smart Contract
+    'UNIUSDT',      # Uniswap
+    'ATOMUSDT',     # Cosmos
+    'DOTUSDT',      # Polkadot
+    'ADAUSDT',      # Cardano
+
+    # Traditional Cryptos
+    'XRPUSDT',      # Ripple
+    'DOGEUSDT',     # Dogecoin
+    'LTCUSDT',      # Litecoin
+    'BCHUSDT',      # Bitcoin Cash
+
+    # Others
+    'ETCUSDT',      # Ethereum Classic
+    'FILUSDT',      # Filecoin
+    'NEARUSDT',     # Near Protocol
+    'APTUSDT'       # Aptos
+]
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# STRATEGY LEVERAGE SETTINGS
+# ═══════════════════════════════════════════════════════════════════════════════
+
+LEVERAGE = {
+    'hf_scalping': 20,      # High-frequency scalping (most aggressive)
+    'momentum': 15,         # Momentum breakouts
+    'stat_arb': 12,        # Statistical arbitrage
+    'funding_arb': 10,     # Funding rate arbitrage
+    'grid': 8              # Grid trading (most conservative)
+}
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# RISK MANAGEMENT (Circuit Breakers)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+# Automatic stop-loss triggers
+CIRCUIT_BREAKER_DAILY_LOSS = 0.10        # Stop if daily loss >10%
+CIRCUIT_BREAKER_TOTAL_DRAWDOWN = 0.15    # Stop if total drawdown >15%
+CIRCUIT_BREAKER_STRATEGY_LOSS = 0.05     # Pause strategy if loss >5%
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# DEPLOYMENT SETTINGS
+# ═══════════════════════════════════════════════════════════════════════════════
+
+DURATION_HOURS = 24                 # How long to run (in hours)
+SCAN_INTERVAL_SECONDS = 10          # Opportunity scanning frequency
+DASHBOARD_REFRESH_SECONDS = 2       # Dashboard update frequency
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# PERFORMANCE TARGETS
+# ═══════════════════════════════════════════════════════════════════════════════
+
+DAILY_RETURN_TARGET = 0.0639        # 6.39% daily
+MONTHLY_RETURN_TARGET = 4.74        # 474% monthly
+WIN_RATE_TARGET = 0.65              # 65% win rate
+MAX_DRAWDOWN_TARGET = 0.15          # 15% max drawdown
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# ADVANCED SETTINGS (Don't change unless you know what you're doing)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+# WebSocket
+WS_PING_INTERVAL = 20               # WebSocket ping interval (seconds)
+WS_RECONNECT_DELAY = 5              # Reconnection delay (seconds)
+WS_MAX_LATENCY_MS = 100             # Warning if latency exceeds this
+
+# API Rate Limiting
+API_MIN_REQUEST_INTERVAL = 0.5      # Minimum time between requests (seconds)
+API_MAX_RETRIES = 3                 # Maximum retry attempts
+
+# Logging
+LOG_LEVEL = 'INFO'                  # DEBUG, INFO, WARNING, ERROR
+LOG_TO_FILE = True                  # Save logs to file
+LOG_TO_CONSOLE = True               # Print logs to console
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# DEPLOYMENT NOTES
+# ═══════════════════════════════════════════════════════════════════════════════
+
+"""
+RECOMMENDED DEPLOYMENT PATH:
+
+1. TESTNET (7 days)
+   - TESTNET = True
+   - INITIAL_CAPITAL = 500 (test funds)
+   - Validate: 6%+ daily return, 65%+ win rate
+
+2. LIVE CONSERVATIVE (7 days)
+   - TESTNET = False
+   - INITIAL_CAPITAL = 100 (start small!)
+   - Goal: $374 profit (+374%)
+
+3. LIVE FULL SCALE (30 days)
+   - TESTNET = False
+   - INITIAL_CAPITAL = 500 (full capital)
+   - Goal: $2,872 profit (+474%)
+
+SAFETY REMINDERS:
+⚠️ Always test on testnet first
+⚠️ Never risk more than you can afford to lose
+⚠️ Monitor the system constantly
+⚠️ Circuit breakers will protect your capital
+⚠️ Past performance doesn't guarantee future results
+"""
