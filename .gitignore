@@ -1,0 +1,88 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual Environment
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Trading Specific
+*.log
+*.csv
+*.json
+!requirements.json
+*.db
+*.sqlite
+*.sqlite3
+
+# API Keys & Secrets
+.env
+.env.local
+.env.*.local
+secrets.py
+config_private.py
+api_keys.txt
+credentials.json
+
+# Trading Data
+data/
+historical_data/
+backtest_results/
+trade_logs/
+performance_logs/
+
+# Temporary Files
+*.tmp
+*.temp
+temp/
+tmp/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# pytest
+.pytest_cache/
+.coverage
+htmlcov/
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Logs
+logs/
+*.log.*
+error.log
+debug.log
+nuclear_swarm_*.log
